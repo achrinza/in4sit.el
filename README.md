@@ -1,6 +1,6 @@
 <!--
     SDPX-FileCopyrightText: 2025 Rifa Achrinza <public-foss-in4sit.el@achrinza.com>
-    SPDX-License-Identifier: FSFAP
+    SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
 # in4sit.el
@@ -64,11 +64,6 @@ anywhere else. Transmission of credentials is only ever handled by the
 
 ### Extract class schedule and dump into a buffer
 
-<!--
-    SPDX-SnippetBegin
-    SPDX-SnippetCopyrightText 2025 Rifa Achrinza <public-foss-in4sit.el@achrinza.com>
-    SDPX-License-Identifier: GPL-3.0-or-later
--->
 ```elisp
 (defun my-callback (courses)
   (with-current-buffer (generate-new-buffer (generate-new-buffer-name "sit-class-schedules"))
@@ -77,26 +72,14 @@ anywhere else. Transmission of credentials is only ever handled by the
     (pop-to-buffer (current-buffer))))
 (in4sit-class-schedule 'my-callback)
 ```
-<!--
-    SPDX-SnippetEnd
--->
-
 
 ### Extract class schedule and dump it to Org format
 
-<!--
-    SPDX-SnippetBegin
-    SPDX-SnippetCopyrightText 2025 Rifa Achrinza <public-foss-in4sit.el@achrinza.com>
-    SDPX-License-Identifier: GPL-3.0-or-later
--->
 ```elisp
 (defun my-callback (courses)
   (pop-to-buffer (in4sit-class-schedule-to-org-agenda courses)))
 (in4sit-class-schedule 'my-callback)
 ```
-<!--
-    SPDX-SnippetEnd
--->
 
 ## License
 
