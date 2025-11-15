@@ -164,7 +164,7 @@ dd/MM/YYYY is assumed for date format"
                                     ("Sa" . 6)))
            (sched-start--end (split-string schedule " - "))
            (sched-start (split-string (pop sched-start--end)))
-           (sched-start-day (cdr (assq (pop sched-start) daycode-to-number-map)))
+           (sched-start-day (cdr (assoc (pop sched-start) daycode-to-number-map)))
            (sched-start-time (split-string (pop sched-start) ":"))
            (sched-start-hour (string-to-number (pop sched-start-time)))
            (sched-start-minute (pop sched-start-time))
@@ -207,7 +207,8 @@ dd/MM/YYYY is assumed for date format"
            (encoded-time-working (copy-tree encoded-time-start)))
       (while (time-less-p encoded-time-working encoded-time-end)
         ;;(debug (format "%s || %s" (decode-time encoded-time-working) (decode-time encoded-time-end)))
-        (if (= (string-to-number (format-time-string "%u" encoded-time-working)))
+        (if (= (string-to-number (format-time-string "%u" encoded-time-working))
+               (sched-start-day))
             (push `((start-time . ,encoded-time-working)
                     ;; We currently assume that there's no such thing as overnight classes.
                     (end-time . ,(time-add encoded-time-working
